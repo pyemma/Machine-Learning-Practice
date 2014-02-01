@@ -21,7 +21,16 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+for ii = 1:size(X, 1)
+    
+    atom = X(ii, :);
+    atom = repmat(atom, K, 1);
+    
+    distance = sum((atom - centroids).^2, 2);
+    
+    ind = find(distance == min(distance));
+    idx(ii) = ind(1);
+end
 
 
 
